@@ -1,0 +1,15 @@
+{
+    "id": "6f046a11-6747-45fa-bfc8-69c4a2241589",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.4.0",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Rohan Lekhwani",
+        "homepage": "https://ronlek.github.io",
+        "support": "https://ronlek.github.io"
+    },
+    "name": "Meme-Me-Up-Scotty",
+    "nameSlug": "meme-me-up-scotty",
+    "classFile": "MemeMeUpScottyApp.ts",
+    "description": "Programmer memes fetched fresh from r/ProgrammerHumor"
+}
