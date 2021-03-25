@@ -21,8 +21,8 @@ export class ScottyCommand implements ISlashCommand {
         const room = context.getRoom(); // the current room
 
         messageStructure
-        .setSender(sender)
         .setRoom(room)
+        .setText(`Here's a meme by _${sender.username}_ to cheer you up! :tada:`)
         .addAttachment(new ImageAttachment(memeResponse.data.memes[0].url));
 
         await modify.getCreator().finish(messageStructure);
