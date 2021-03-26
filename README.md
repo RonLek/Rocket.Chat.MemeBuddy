@@ -2,6 +2,8 @@
 
 Cheer up! Scotty's here. 🎉
 
+Scotty is your new wingman to get memes on Rocket.Chat. A `/scotty` is all it needs to fetch you a new meme everytime!
+
 <img src="https://i.postimg.cc/nhTrcYd4/icon.png" height="200px" width="auto"/>
 
 ## Demo
