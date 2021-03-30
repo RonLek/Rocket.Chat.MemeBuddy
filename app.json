@@ -6,11 +6,11 @@
     "author": {
         "name": "Rohan Lekhwani",
         "homepage": "https://ronlek.github.io",
-        "support": "https://github.com/RonLek/Rocket.Chat.App-Meme-Me-Up-Scotty/issues"
+        "support": "https://github.com/RonLek/Rocket.Chat.MemeBuddy/issues"
     },
-    "name": "Meme-Me-Up-Scotty",
-    "nameSlug": "meme-me-up-scotty",
-    "classFile": "MemeMeUpScottyApp.ts",
+    "name": "MemeBuddy",
+    "nameSlug": "memebuddy",
+    "classFile": "MemeBuddyApp.ts",
     "description": "Programmer memes fetched fresh from r/ProgrammerHumor",
     "implements": []
 }

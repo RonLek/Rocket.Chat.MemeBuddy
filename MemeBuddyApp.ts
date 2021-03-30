@@ -6,14 +6,14 @@ import {
 import { App } from '@rocket.chat/apps-engine/definition/App';
 import { IAppInfo } from '@rocket.chat/apps-engine/definition/metadata';
 
-import {ScottyCommand} from './commands/scotty'
+import {MemeCommand} from './commands/meme'
 
-export class MemeMeUpScottyApp extends App {
+export class MemeBuddyApp extends App {
     constructor(info: IAppInfo, logger: ILogger, accessors: IAppAccessors) {
         super(info, logger, accessors);
     }
 
     protected async extendConfiguration(configuration: IConfigurationExtend): Promise<void> {
-        await configuration.slashCommands.provideSlashCommand(new ScottyCommand(this));
+        await configuration.slashCommands.provideSlashCommand(new MemeCommand(this));
     }
 }
