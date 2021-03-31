@@ -12,5 +12,7 @@
     "nameSlug": "memebuddy",
     "classFile": "MemeBuddyApp.ts",
     "description": "Programmer memes fetched fresh from r/ProgrammerHumor",
-    "implements": []
+    "implements": [
+        "IPostMessageSent"
+    ]
 }

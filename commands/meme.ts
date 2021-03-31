@@ -1,5 +1,3 @@
-import { ButtonStyle } from "@rocket.chat/apps-engine/definition/uikit";
-
 import {
     ISlashCommand,
     SlashCommandContext,
@@ -8,12 +6,14 @@ import {
     IHttp,
     IModify,
     IRead,
+    IPersistence,
 } from "@rocket.chat/apps-engine/definition/accessors";
 import { App } from "@rocket.chat/apps-engine/definition/App";
+import { initiatorMessage } from "../lib/initiatorMessage";
 
 export class MemeCommand implements ISlashCommand {
     public command = "meme";
-    public i18nDescription = "Fetches a meme from r/ProgrammerHumor on Reddit";
+    public i18nDescription = "Fetches a meme from famous meme subreddits!";
     public i18nParamsExample = "";
     public providesPreview = false;
 
@@ -23,58 +23,17 @@ export class MemeCommand implements ISlashCommand {
         context: SlashCommandContext,
         read: IRead,
         modify: IModify,
-        http: IHttp
+        http: IHttp,
+        persistence: IPersistence
     ): Promise<void> {
         const sender = context.getSender(); // the user calling the slashcommand
         const room = context.getRoom(); // the current room
 
-        const greetBuilder = await modify
-            .getCreator()
-            .startMessage()
-            .setRoom(room)
-            .setText(`Hey _${sender.username}_ !`);
+        const data = {
+            room: room,
+            sender: sender,
+        };
 
-        await modify.getCreator().finish(greetBuilder);
-
-        const builder = await modify
-            .getCreator()
-            .startMessage()
-            .setRoom(room)
-            .setText(`Hey _${sender.username}_ !`);
-
-        const block = modify.getCreator().getBlockBuilder();
-        // TODO: Make options disappear when one selected
-
-        block.addSectionBlock({
-            text: block.newPlainTextObject("Choose a meme subreddit below 👇 "),
-        });
-
-        block.addActionsBlock({
-            blockId: "subreddits",
-            elements: [
-                block.newButtonElement({
-                    actionId: "memeSelect",
-                    text: block.newPlainTextObject("ProgrammerHumor"),
-                    value: "programmerhumor",
-                    style: ButtonStyle.PRIMARY,
-                }),
-                block.newButtonElement({
-                    actionId: "memeSelect",
-                    text: block.newPlainTextObject("DankMemes"),
-                    value: "dankmemes",
-                    style: ButtonStyle.PRIMARY,
-                }),
-                block.newButtonElement({
-                    actionId: "memeSelect",
-                    text: block.newPlainTextObject("WholesomeMemes"),
-                    value: "wholesomememes",
-                    style: ButtonStyle.PRIMARY,
-                }),
-            ],
-        });
-
-        builder.setBlocks(block);
-
-        await modify.getCreator().finish(builder);
+        await initiatorMessage({ data, read, persistence, modify, http });
     }
 }
