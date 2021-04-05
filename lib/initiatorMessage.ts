@@ -11,7 +11,7 @@ export async function initiatorMessage({
     read,
     persistence,
     modify,
-    http
+    http,
 }: {
     data;
     read: IRead;
@@ -25,7 +25,14 @@ export async function initiatorMessage({
         .setRoom(data.room)
         .setText(`Hey _${data.sender.username}_ !`);
 
-    await modify.getCreator().finish(greetBuilder);
+    // Notifier not applicable to LiveChat Rooms
+    if (data.room.type !== "l") {
+        await modify
+            .getNotifier()
+            .notifyUser(data.sender, greetBuilder.getMessage());
+    } else {
+        await modify.getCreator().finish(greetBuilder);
+    }
 
     const builder = await modify.getCreator().startMessage().setRoom(data.room);
 
@@ -62,5 +69,12 @@ export async function initiatorMessage({
 
     builder.setBlocks(block);
 
-    await modify.getCreator().finish(builder);
+    // Notifier not applicable to LiveChat Rooms
+    if (data.room.type !== "l") {
+        await modify
+            .getNotifier()
+            .notifyUser(data.sender, builder.getMessage());
+    } else {
+        await modify.getCreator().finish(builder);
+    }
 }
