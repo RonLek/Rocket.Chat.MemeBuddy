@@ -40,7 +40,7 @@ export async function initiatorMessage({
     // TODO: Make options disappear when one selected
 
     block.addSectionBlock({
-        text: block.newPlainTextObject("Choose a meme subreddit below 👇 "),
+        text: block.newPlainTextObject("Choose a meme category below 👇 "),
     });
 
     block.addActionsBlock({
@@ -48,19 +48,19 @@ export async function initiatorMessage({
         elements: [
             block.newButtonElement({
                 actionId: "memeSelect",
-                text: block.newPlainTextObject("ProgrammerHumor"),
+                text: block.newPlainTextObject("Programmer"),
                 value: "programmerhumor",
                 style: ButtonStyle.PRIMARY,
             }),
             block.newButtonElement({
                 actionId: "memeSelect",
-                text: block.newPlainTextObject("DankMemes"),
+                text: block.newPlainTextObject("Dank"),
                 value: "dankmemes",
                 style: ButtonStyle.PRIMARY,
             }),
             block.newButtonElement({
                 actionId: "memeSelect",
-                text: block.newPlainTextObject("WholesomeMemes"),
+                text: block.newPlainTextObject("Wholesome"),
                 value: "wholesomememes",
                 style: ButtonStyle.PRIMARY,
             }),
