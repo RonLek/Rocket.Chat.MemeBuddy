@@ -132,7 +132,7 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
                         .getCreator()
                         .startLivechatMessage()
                         .setVisitor(data.visitor)
-                        .setText(`${memeResponse.data.memes[0].title}`)
+                        .setText(`*${memeResponse.data.memes[0].title}*`)
                         .addAttachment(
                             new ImageAttachment(`${memeResponse.data.memes[0].url}`)
                         );

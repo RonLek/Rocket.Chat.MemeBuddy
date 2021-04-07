@@ -37,7 +37,6 @@ export async function initiatorMessage({
     const builder = await modify.getCreator().startMessage().setRoom(data.room);
 
     const block = modify.getCreator().getBlockBuilder();
-    // TODO: Make options disappear when one selected
 
     block.addSectionBlock({
         text: block.newPlainTextObject("Choose a meme category below 👇 "),
