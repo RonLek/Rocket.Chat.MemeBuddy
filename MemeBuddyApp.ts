@@ -10,7 +10,7 @@ import {
 import { App } from "@rocket.chat/apps-engine/definition/App";
 import { IAppInfo } from "@rocket.chat/apps-engine/definition/metadata";
 import { IUIKitResponse, UIKitLivechatBlockInteractionContext, UIKitBlockInteractionContext } from "@rocket.chat/apps-engine/definition/uikit";
-import { ImageAttachment } from "./lib/ImageAttachment";
+import { MemeAsImageAttachment } from "./lib/MemeAsImageAttachment";
 
 import { MemeCommand } from "./commands/meme";
 import {
@@ -49,7 +49,7 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
                         .startMessage()
                         .setText(`*${memeResponse.data.memes[0].title}*`)
                         .addAttachment(
-                            new ImageAttachment(memeResponse.data.memes[0].url)
+                            new MemeAsImageAttachment(memeResponse.data.memes[0].url)
                         );
 
                     if (room) {
@@ -134,7 +134,7 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
                         .setVisitor(data.visitor)
                         .setText(`*${memeResponse.data.memes[0].title}*`)
                         .addAttachment(
-                            new ImageAttachment(`${memeResponse.data.memes[0].url}`)
+                            new MemeAsImageAttachment(`${memeResponse.data.memes[0].url}`)
                         );
 
                     if (room) {
