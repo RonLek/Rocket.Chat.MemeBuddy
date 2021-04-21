@@ -1,6 +1,6 @@
 {
-    "id": "6f046a11-6747-45fa-bfc8-69c4a2241589",
-    "version": "0.0.1",
+    "id": "4a547529-c8c7-4357-96fa-4439614b99b4",
+    "version": "1.0.0",
     "requiredApiVersion": "^1.19.0",
     "iconFile": "icon.png",
     "author": {
@@ -11,7 +11,7 @@
     "name": "MemeBuddy",
     "nameSlug": "memebuddy",
     "classFile": "MemeBuddyApp.ts",
-    "description": "Programmer memes fetched fresh from r/ProgrammerHumor",
+    "description": "Your wingman to get memes on Rocket.Chat. 🚀. Do a /meme on Rocket.Chat or a :meme: in LiveChat to watch it in action",
     "implements": [
         "IPostMessageSent"
     ]
