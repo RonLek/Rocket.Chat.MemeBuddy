@@ -1,10 +1,9 @@
-import { IMessageAttachment } from '@rocket.chat/apps-engine/definition/messages';
+import { IMessageAttachment } from "@rocket.chat/apps-engine/definition/messages";
 
-export class MemeAsImageAttachment implements IMessageAttachment{
-    imageUrl?: string; // [1]
+export class MemeAsImageAttachment implements IMessageAttachment {
+    imageUrl?: string;
 
-    constructor(imgUrl: string){
+    constructor(imgUrl: string) {
         this.imageUrl = imgUrl;
     }
-
 }

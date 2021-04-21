@@ -9,7 +9,11 @@ import {
 } from "@rocket.chat/apps-engine/definition/accessors";
 import { App } from "@rocket.chat/apps-engine/definition/App";
 import { IAppInfo } from "@rocket.chat/apps-engine/definition/metadata";
-import { IUIKitResponse, UIKitLivechatBlockInteractionContext, UIKitBlockInteractionContext } from "@rocket.chat/apps-engine/definition/uikit";
+import {
+    IUIKitResponse,
+    UIKitLivechatBlockInteractionContext,
+    UIKitBlockInteractionContext,
+} from "@rocket.chat/apps-engine/definition/uikit";
 import { MemeAsImageAttachment } from "./lib/MemeAsImageAttachment";
 
 import { MemeCommand } from "./commands/meme";
@@ -49,7 +53,9 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
                         .startMessage()
                         .setText(`*${memeResponse.data.memes[0].title}*`)
                         .addAttachment(
-                            new MemeAsImageAttachment(memeResponse.data.memes[0].url)
+                            new MemeAsImageAttachment(
+                                memeResponse.data.memes[0].url
+                            )
                         );
 
                     if (room) {
@@ -75,14 +81,14 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
         };
     }
 
-
-    public async executeLivechatBlockActionHandler(context: UIKitLivechatBlockInteractionContext,
+    public async executeLivechatBlockActionHandler(
+        context: UIKitLivechatBlockInteractionContext,
         read: IRead,
         http: IHttp,
         persistence: IPersistence,
-        modify: IModify): Promise<IUIKitResponse> {
+        modify: IModify
+    ): Promise<IUIKitResponse> {
         const data = context.getInteractionData();
-        // console.log("Data =", data);
 
         const { actionId } = data;
 
@@ -95,46 +101,15 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
 
                     const { room } = context.getInteractionData();
 
-                    // const authHttpRequest: IHttpRequest = {
-                    //     headers: {
-                    //         'Content-Type': 'application/json',
-                    //     },
-                    //     data: {
-                    //         user: 'memebuddy-lc.bot',
-                    //         password: 'helloworld',
-                    //     },
-                    // };
-        
-                    // http.post('http://localhost:3000/api/v1/login', authHttpRequest).then(
-                    //     (loginResponse) => {
-                    //         // console.log(loginResponse.content);
-                    //         const loginResponseJSON = JSON.parse((loginResponse.content || '{}'));
-                            
-                    //         const postMessageRequest: IHttpRequest = {
-                    //             headers: {
-                    //                 'Content-Type': 'application/json',
-                    //                 'X-Auth-Token': loginResponseJSON.data.authToken,
-                    //                 'X-User-Id': loginResponseJSON.data.userId,
-                    //             },
-                    //             data: {
-                    //                 file: `${memeResponse.data.memes[0].url}`
-                    //             },
-                    //         }
-
-                    //         http.post(`http://localhost:3000/api/v1/room.upload/${data.message?.room.id}`, postMessageRequest).then(
-                    //             (postMessageResponse) => {
-                    //                 console.log("Post Message Response = ", postMessageResponse)
-                    //             }
-                    //         )
-                    //     })        
-
                     const memeSender = await modify
                         .getCreator()
                         .startLivechatMessage()
                         .setVisitor(data.visitor)
                         .setText(`*${memeResponse.data.memes[0].title}*`)
                         .addAttachment(
-                            new MemeAsImageAttachment(`${memeResponse.data.memes[0].url}`)
+                            new MemeAsImageAttachment(
+                                `${memeResponse.data.memes[0].url}`
+                            )
                         );
 
                     if (room) {
@@ -168,7 +143,6 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
         modify: IModify
     ): Promise<void> {
         if (message.room.type !== "l") {
-            console.log("Not livechat");
             return;
         }
 
