@@ -42,8 +42,9 @@ export class MemeBuddyApp extends App implements IPostMessageSent {
         switch (actionId) {
             case "memeSelect": {
                 try {
+
                     const memeResponse = await http.get(
-                        `https://meme-api.herokuapp.com/gimme/${data.value}/1`
+                        `https://meme-api.com/gimme/${data.value}/1`
                     );
 
                     const { room } = context.getInteractionData();
